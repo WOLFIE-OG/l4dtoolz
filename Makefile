@@ -5,6 +5,7 @@ HX_METAMOD = ../mmsource
 #
 # l4dtoolz_mm.so
 #
+
 HX_INCLUDE = -I. \
 	-I$(HX_METAMOD)/core \
 	-I$(HX_METAMOD)/core/sourcehook \
