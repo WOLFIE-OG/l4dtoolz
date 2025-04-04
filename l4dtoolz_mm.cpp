@@ -19,7 +19,7 @@ void* l4dtoolz::tmp_player = NULL;
 void* l4dtoolz::unreserved_ptr = NULL;
 void* l4dtoolz::lobby_match_ptr = NULL;
 
-ConVar sv_maxplayers("sv_maxplayers", "-1", 0, "Max Human Players", true, -1, true, 32, l4dtoolz::OnChangeMaxplayers);
+ConVar sv_maxplayers("sv_maxplayers", "-1", 0, "Max Human Players", true, -1, true, 100000000, l4dtoolz::OnChangeMaxplayers);
 #if SOURCE_ENGINE == SE_LEFT4DEAD
 ConVar sv_removehumanlimit("sv_removehumanlimit", "0", 0, "Remove Human limit reached kick", true, 0, true, 1, l4dtoolz::OnChangeRemovehumanlimit);
 #endif
@@ -164,7 +164,7 @@ bool l4dtoolz::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool
 			const char *pszCmdLineMax;
 			if(CommandLine()->CheckParm("-maxplayers", &pszCmdLineMax) || CommandLine()->CheckParm("+maxplayers", &pszCmdLineMax)) {
 				char command[32];
-				UTIL_Format(command, sizeof(command), "maxplayers %d\n", clamp(atoi(pszCmdLineMax), 1, 32));
+				UTIL_Format(command, sizeof(command), "maxplayers %d\n", clamp(atoi(pszCmdLineMax), 1, 100000000));
 				engine->ServerCommand(command);
 			} else {
 				engine->ServerCommand("maxplayers 31\n");
